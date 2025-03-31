@@ -1,0 +1,249 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+nav a:hover {
+    color: #cccccc;
+}
+
+main {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.build-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.build-card {
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.build-card h3 {
+    margin-top: 0;
+    color: #35424a;
+}
+
+.build-card .description {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.btn {
+    display: inline-block;
+    background: #35424a;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.btn:hover {
+    background: #4e5d6c;
+}
+
+.btn.edit {
+    background: #5bc0de;
+}
+
+.btn.edit:hover {
+    background: #46b8da;
+}
+
+.btn.save {
+    background: #5cb85c;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.btn.save:hover {
+    background: #4cae4c;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+}
+
+.build-container {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.build-type {
+    color: #666;
+    font-style: italic;
+}
+
+.build-description {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #35424a;
+}
+
+.build-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.item-slot {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.item-slot h3 {
+    margin-top: 0;
+    color: #35424a;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.item-slot ul {
+    list-style: none;
+    padding: 0;
+}
+
+.item-slot li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #ddd;
+}
+
+.item-slot li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.item-slot img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+}
+
+.item-slot-editor {
+    background: #f9f9f9;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+}
+
+.item-slot-editor h4 {
+    margin-top: 0;
+    color: #35424a;
+}
+
+.item-form {
+    background: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.item-form .form-group {
+    margin-bottom: 0.5rem;
+    margin-bottom: 15px;
+}
+
+.item-form .form-group label {
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.add-alternative {
+    background: #5bc0de;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.add-alternative:hover {
+    background: #46b8da;
+}
+.item-form img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.item-form img {
+    max-width: 50px;
+    max-height: 50px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

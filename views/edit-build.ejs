@@ -1,0 +1,122 @@
+<%- include('partials/header') %>
+    <h2>Edit Build: <%= build.name %></h2>
+    
+    <form action="/update-build/<%= build.id %>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="items" value="<%= JSON.stringify(items) %>">
+        <div class="form-group">
+            <label for="name">Build Name:</label>
+            <input type="text" id="name" name="name" value="<%= build.name %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="3"><%= build.description || '' %></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="type">Build Type:</label>
+            <select id="type" name="type" required>
+                <option value="farming" <%= build.type === 'farming' ? 'selected' : '' %>>Farming</option>
+                <option value="solo_pvp" <%= build.type === 'solo_pvp' ? 'selected' : '' %>>Solo PvP</option>
+                <option value="group_pvp" <%= build.type === 'group_pvp' ? 'selected' : '' %>>Group PvP</option>
+                <option value="avalon" <%= build.type === 'avalon' ? 'selected' : '' %>>Avalon</option>
+                <option value="ganking" <%= build.type === 'ganking' ? 'selected' : '' %>>Ganking</option>
+                <option value="gathering" <%= build.type === 'gathering' ? 'selected' : '' %>>Gathering</option>
+                <option value="custom" <%= build.type === 'custom' ? 'selected' : '' %>>Custom</option>
+            </select>
+        </div>
+        
+        <h3>Build Items</h3>
+        
+<% const slots = ['weapon', 'offhand', 'head', 'chest', 'boots', 'cape', 'bag', 'potion', 'food']; %>
+
+<% slots.forEach((slot, slotIndex) => { %>
+    <div class="item-slot-editor">
+        <h4><%= slot.charAt(0).toUpperCase() + slot.slice(1) %></h4>
+        
+        <% const slotItems = items[slot] || []; %>
+        <% if (slotItems.length === 0) { %>
+            <div class="item-form">
+                <input type="hidden" name="items[<%= slot %>][0][slot]" value="<%= slot %>">
+                <div class="form-group">
+                    <label>Item Name:</label>
+                    <input type="text" name="items[<%= slot %>][0][item_name]" required>
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" name="items[<%= slot %>][0][item_description]">
+                </div>
+                <div class="form-group">
+                    <label>Image:</label>
+                    <input type="file" name="item_image">
+                    <small>Or enter URL:</small>
+                    <input type="text" name="items[<%= slot %>][0][item_image]">
+                </div>
+            </div>
+        <% } else { %>
+            <% slotItems.forEach((item, index) => { %>
+                <div class="item-form">
+                    <input type="hidden" name="items[<%= slot %>][<%= index %>][id]" value="<%= item.id %>">
+                    <input type="hidden" name="items[<%= slot %>][<%= index %>][slot]" value="<%= slot %>">
+                    <div class="form-group">
+                        <label>Item Name:</label>
+                        <input type="text" name="items[<%= slot %>][<%= index %>][item_name]" 
+                               value="<%= item.item_name %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" name="items[<%= slot %>][<%= index %>][item_description]" 
+                               value="<%= item.item_description || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label>Image:</label>
+                        <% if (item.item_image) { %>
+                            <img src="<%= item.item_image %>" style="max-width: 50px; display: block; margin-bottom: 5px;">
+                        <% } %>
+                        <input type="file" name="item_image">
+                        <small>Or enter URL:</small>
+                        <input type="text" name="items[<%= slot %>][<%= index %>][item_image]" 
+                               value="<%= item.item_image || '' %>">
+                    </div>
+                    <% if (index === slotItems.length - 1) { %>
+                        <button type="button" class="btn add-alternative" data-slot="<%= slot %>">Add Alternative</button>
+                    <% } %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+<% }); %>
+        
+        <button type="submit" class="btn save">Save Build</button>
+    </form>
+    
+    <script>
+        document.querySelectorAll('.add-alternative').forEach(button => {
+            button.addEventListener('click', function() {
+                const slot = this.dataset.slot;
+                const container = this.closest('.item-slot-editor');
+                const index = container.querySelectorAll('.item-form').length;
+                
+                const formHTML = `
+                    <div class="item-form">
+                        <input type="hidden" name="items[${slot}][${index}][slot]" value="${slot}">
+                        <div class="form-group">
+                            <label>Item Name:</label>
+                            <input type="text" name="items[${slot}][${index}][item_name]" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input type="text" name="items[${slot}][${index}][item_description]">
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL:</label>
+                            <input type="text" name="items[${slot}][${index}][item_image]">
+                        </div>
+                    </div>
+                `;
+                
+                this.insertAdjacentHTML('beforebegin', formHTML);
+            });
+        });
+    </script>
+<%- include('partials/footer') %>

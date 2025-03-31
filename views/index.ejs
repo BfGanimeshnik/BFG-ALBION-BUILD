@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+    <h2>Available Builds</h2>
+    
+    <div class="build-grid">
+        <% builds.forEach(build => { %>
+            <div class="build-card">
+                <h3><%= build.name %></h3>
+                <p><%= build.type %></p>
+                <p class="description"><%= build.description || 'No description' %></p>
+                <a href="/build/<%= build.id %>" class="btn">View Build</a>
+                <a href="/edit-build/<%= build.id %>" class="btn edit">Edit</a>
+            </div>
+        <% }); %>
+    </div>
+<%- include('partials/footer') %>

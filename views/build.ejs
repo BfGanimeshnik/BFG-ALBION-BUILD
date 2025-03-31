@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+    <div class="build-container">
+        <h2><%= build.name %></h2>
+        <p class="build-type"><strong>Type:</strong> <%= build.type %></p>
+        <p class="build-description"><%= build.description || 'No description provided' %></p>
+        
+        <div class="build-items">
+            <% const slots = ['weapon', 'offhand', 'head', 'chest', 'boots', 'cape', 'bag', 'potion', 'food']; %>
+            
+            <% slots.forEach(slot => { %>
+                <% if (items[slot]) { %>
+                    <div class="item-slot">
+                        <h3><%= slot.charAt(0).toUpperCase() + slot.slice(1) %></h3>
+                        <ul>
+                            <% items[slot].forEach(item => { %>
+                                <li>
+                                    <strong><%= item.item_name %></strong>
+                                    <% if (item.item_description) { %>
+                                        <p><%= item.item_description %></p>
+                                    <% } %>
+                                    <% if (item.item_image) { %>
+                                        <img src="<%= item.item_image %>" alt="<%= item.item_name %>">
+                                    <% } %>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+<%- include('partials/footer') %>

@@ -1,1 +1,30 @@
-1
+<%- include('partials/header') %>
+    <h2>Add New Build</h2>
+    
+    <form action="/add-build" method="POST">
+        <div class="form-group">
+            <label for="name">Build Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="type">Build Type:</label>
+            <select id="type" name="type" required>
+                <option value="farming">Farming</option>
+                <option value="solo_pvp">Solo PvP</option>
+                <option value="group_pvp">Group PvP</option>
+                <option value="avalon">Avalon</option>
+                <option value="ganking">Ganking</option>
+                <option value="gathering">Gathering</option>
+                <option value="custom">Custom</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn">Create Build</button>
+    </form>
+<%- include('partials/footer') %>

@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: albion-bot
+    runtime: node
+    buildCommand: yarn install && yarn build
+    startCommand: node bot.js
+    envVars:
+      - key: TOKEN
+        value: YOUR_DISCORD_BOT_TOKEN
+      - key: PORT
+        value: 3000

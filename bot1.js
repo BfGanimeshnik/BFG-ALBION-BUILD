@@ -7,7 +7,7 @@ const fs = require('fs');
 
 // Конфигурация
 const config = {
-    token: 'YOUR_BOT_TOKEN', // ЗАМЕНИТЕ НА РЕАЛЬНЫЙ ТОКЕН
+    token: 'process.env.TOKEN', // ЗАМЕНИТЕ НА РЕАЛЬНЫЙ ТОКЕН
     port: process.env.PORT || 3000,
     uploadDir: 'public/uploads'
 };
